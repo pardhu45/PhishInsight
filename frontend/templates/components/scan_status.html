@@ -1,0 +1,21 @@
+<div class="mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+
+    <h2 class="text-xl font-semibold mb-4">
+        Analysis Status
+    </h2>
+
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5">
+
+        {% if result %}
+        <p class="text-green-400 font-semibold">
+            {{ result.status }}
+        </p>
+        {% else %}
+        <p class="text-slate-400">
+            Waiting for URL analysis...
+        </p>
+        {% endif %}
+
+    </div>
+
+</div>

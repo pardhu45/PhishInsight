@@ -1,0 +1,126 @@
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+
+    <h2 class="text-2xl font-bold mb-6">
+        Threat Assessment
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Threat Level -->
+
+        <div class="bg-slate-800 rounded-xl p-5">
+
+            <p class="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                Threat Level
+            </p>
+
+            <p class="text-3xl font-bold
+
+            {% if result.threat_level == 'SAFE' %}
+                text-green-400
+            {% elif result.threat_level == 'LOW' %}
+                text-yellow-400
+            {% elif result.threat_level == 'MEDIUM' %}
+                text-orange-400
+            {% elif result.threat_level == 'HIGH' %}
+                text-red-400
+            {% else %}
+                text-red-600
+            {% endif %}
+            ">
+                {{ result.threat_level }}
+            </p>
+
+        </div>
+
+        <!-- Risk Score -->
+
+        <div class="bg-slate-800 rounded-xl p-5">
+
+            <p class="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+                Total Risk Score
+            </p>
+
+            <p class="text-3xl font-bold text-red-400">
+                {{ result.risk_score }} / 100
+            </p>
+
+        </div>
+
+        <!-- Confidence -->
+
+        <div class="bg-slate-800 rounded-xl p-5">
+
+            <p class="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                <i data-lucide="badge-check" class="w-4 h-4"></i>
+                Confidence
+            </p>
+
+            <p class="text-3xl font-bold text-cyan-400">
+                {{ result.confidence }}%
+            </p>
+
+        </div>
+
+        <!-- Recommendation -->
+
+        <div class="bg-slate-800 rounded-xl p-5">
+
+            <p class="text-sm text-slate-400 mb-2 flex items-center gap-2">
+                <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                Recommendation
+            </p>
+
+            <p class="leading-relaxed">
+                {{ result.recommendation }}
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Risk Meter -->
+
+    <div class="mt-8">
+
+        <div class="flex justify-between items-center mb-3">
+
+            <span class="font-semibold flex items-center gap-2">
+                <i data-lucide="gauge" class="w-4 h-4"></i>
+                Risk Meter
+            </span>
+
+            <span class="text-slate-400">
+                {{ result.risk_score }}%
+            </span>
+
+        </div>
+
+        <div class="w-full bg-slate-800 rounded-full h-5 overflow-hidden">
+
+            <div
+                class="h-5 rounded-full transition-all duration-500
+
+                {% if result.risk_score < 15 %}
+                    bg-green-500
+                {% elif result.risk_score < 40 %}
+                    bg-yellow-500
+                {% elif result.risk_score < 65 %}
+                    bg-orange-500
+                {% elif result.risk_score < 85 %}
+                    bg-red-500
+                {% else %}
+                    bg-red-700
+                {% endif %}
+
+                
+                "style="width: {{ result.risk_score }}%;">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

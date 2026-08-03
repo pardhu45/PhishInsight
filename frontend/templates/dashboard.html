@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h1 class="text-4xl font-bold">
+    Dashboard
+</h1>
+
+<p class="text-slate-400 mt-2 mb-10">
+    Dashboard preview. Live security metrics and scan statistics will be available in <span class="text-blue-400 font-semibold">PhishInsight v1.1</span>.
+</p>
+
+<div class="grid grid-cols-4 gap-6">
+
+    {% with title="Threat Score", value="92", subtitle="High Risk" %}
+        {% include "components/stat_card.html" %}
+    {% endwith %}
+
+    {% with title="Total Scans", value="128", subtitle="Today's Activity" %}
+        {% include "components/stat_card.html" %}
+    {% endwith %}
+
+    {% with title="AI Engine", value="READY", subtitle="Hybrid ML + DL" %}
+        {% include "components/stat_card.html" %}
+    {% endwith %}
+
+    {% with title="Threats Blocked", value="41", subtitle="Protected URLs" %}
+        {% include "components/stat_card.html" %}
+    {% endwith %}
+
+</div>
+
+<div class="grid grid-cols-3 gap-6 mt-10">
+
+    <div class="col-span-2">
+        {% include "components/chart_card.html" %}
+    </div>
+
+    
+
+</div>
+
+<div class="mt-10">
+    {% include "components/activity_table.html" %}
+</div>
+{% endblock %}

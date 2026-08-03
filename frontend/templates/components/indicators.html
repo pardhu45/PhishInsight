@@ -1,0 +1,65 @@
+<div class="mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+
+    <div class="mb-6">
+
+        <h2 class="text-2xl font-bold">
+            Threat Indicators
+        </h2>
+
+        <p class="text-slate-400 text-sm mt-1">
+            Security indicators detected during URL analysis.
+        </p>
+
+    </div>
+
+    {% if result.indicators %}
+
+        <div class="space-y-3">
+
+            {% for indicator in result.indicators %}
+
+            <div class="flex items-center justify-between bg-slate-800 border border-slate-700 rounded-xl p-4 hover:border-blue-500 transition">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="text-yellow-400 text-xl">
+                        ⚠
+                    </div>
+
+                    <div>
+
+                        <p class="font-medium text-white">
+                            {{ indicator.message }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 font-semibold text-sm">
+                    +{{ indicator.points }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="bg-green-500/10 border border-green-500/20 rounded-xl p-5">
+
+            <p class="text-green-400 font-medium">
+                ✅ No suspicious indicators detected.
+            </p>
+
+            <p class="text-slate-400 text-sm mt-1">
+                This URL does not currently exhibit common phishing characteristics.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>

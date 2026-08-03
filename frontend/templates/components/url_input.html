@@ -1,0 +1,29 @@
+<form action="/scanner" method="POST">
+
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+
+        <label class="block text-lg font-semibold mb-4">
+            Enter URL
+        </label>
+
+        <input
+            type="url"
+            id="urlInput"
+            name="url"
+            value="{{url}}"
+            placeholder="https://example.com"
+            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+            required
+        >
+
+        <button
+            id="analyzeButton"
+            type="submit"
+            class="mt-6 w-full bg-blue-600 hover:bg-blue-700 transition rounded-xl py-4 font-semibold"
+        >
+            Analyze URL
+        </button>
+
+    </div>
+
+</form>
