@@ -20,37 +20,54 @@
 
         <tbody>
 
-            <tr class="border-t border-slate-800">
+            {% if recent_scans %}
 
-                <td class="py-4">
-                    paypal-login.xyz
-                </td>
+                {% for scan in recent_scans %}
 
-                <td class="text-red-400">
-                    PHISHING
-                </td>
+                <tr class="border-t border-slate-800">
 
-                <td>
-                    94
-                </td>
+                    <td class="py-4">
+                        {{ scan[0] }}
+                    </td>
 
-            </tr>
+                    <td
+                        {% if scan[1] == "SAFE" %}
+                            class="text-green-400"
+                        {% elif scan[1] == "LOW" %}
+                            class="text-blue-400"
+                        {% elif scan[1] == "MEDIUM" %}
+                            class="text-yellow-400"
+                        {% elif scan[1] == "HIGH" %}
+                            class="text-orange-400"
+                        {% elif scan[1] == "CRITICAL" %}
+                            class="text-red-400"
+                        {% endif %}
+                    >
+                        {{ scan[1] }}
+                    </td>
 
-            <tr class="border-t border-slate-800">
+                    <td>
+                        {{ scan[2] }}
+                    </td>
 
-                <td class="py-4">
-                    github.com
-                </td>
+                </tr>
 
-                <td class="text-green-400">
-                    SAFE
-                </td>
+                {% endfor %}
 
-                <td>
-                    8
-                </td>
+            {% else %}
 
-            </tr>
+                <tr>
+
+                    <td
+                        colspan="3"
+                        class="py-8 text-center text-slate-400"
+                    >
+                        No recent scans available.
+                    </td>
+
+                </tr>
+
+            {% endif %}
 
         </tbody>
 

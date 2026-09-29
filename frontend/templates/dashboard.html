@@ -9,16 +9,16 @@
 </h1>
 
 <p class="text-slate-400 mt-2 mb-10">
-    Dashboard preview. Live security metrics and scan statistics will be available in <span class="text-blue-400 font-semibold">PhishInsight v1.1</span>.
+    Live security metrics and scan statistics from your URL analysis history.
 </p>
 
 <div class="grid grid-cols-4 gap-6">
 
-    {% with title="Threat Score", value="92", subtitle="High Risk" %}
+    {% with title="Average Risk Score", value=average_risk, subtitle="Across All Scans" %}
         {% include "components/stat_card.html" %}
     {% endwith %}
 
-    {% with title="Total Scans", value="128", subtitle="Today's Activity" %}
+    {% with title="Total Scans", value=total_scans, subtitle="All Recorded Scans" %}
         {% include "components/stat_card.html" %}
     {% endwith %}
 
@@ -26,9 +26,9 @@
         {% include "components/stat_card.html" %}
     {% endwith %}
 
-    {% with title="Threats Blocked", value="41", subtitle="Protected URLs" %}
-        {% include "components/stat_card.html" %}
-    {% endwith %}
+    {% with title="Threats Detected", value=threats_detected, subtitle="Non-SAFE Scans" %}
+    {% include "components/stat_card.html" %}
+{% endwith %}
 
 </div>
 
@@ -45,4 +45,12 @@
 <div class="mt-10">
     {% include "components/activity_table.html" %}
 </div>
+
+
+<script>
+    const threatDistribution = {{ threat_distribution | tojson }};
+</script>
+
+
 {% endblock %}
+
