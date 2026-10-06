@@ -1,6 +1,6 @@
 # 🛡️ PhishInsight
 
-> AI-Powered Phishing URL Detection & Threat Analysis Platform
+> Phishing URL Detection & Threat Analysis Platform
 
 PhishInsight is a cybersecurity web application that analyzes URLs for phishing indicators using a rule-based detection engine. It evaluates multiple security features, calculates a risk score, classifies the threat level, and provides detailed explanations to help users understand why a URL is considered safe or suspicious.
 
